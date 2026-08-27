@@ -28,7 +28,7 @@
             line-height: 1.6;
         }
 
-        /* BANNER S OBRÁZKOM LOGA */
+        /* BANNER */
         .top-banner {
             background-color: #031433;
             padding: 20px 10px;
@@ -44,11 +44,32 @@
             margin: 0 auto;
         }
 
+        /* NAVIGATION MENU */
+        nav {
+            background-color: #001838;
+            text-align: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #38bdf8;
+        }
+
         /* HERO HEADER */
         header {
             background: linear-gradient(135deg, #031433 0%, #002855 100%);
             color: #ffffff;
-            padding: 70px 20px;
+            padding: 60px 20px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
@@ -103,16 +124,37 @@
             box-shadow: 0 6px 20px rgba(0, 119, 182, 0.6);
         }
 
-        /* MAIN CONTENT */
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 50px 20px;
+        }
+
+        /* ABOUT BOX */
+        .about-box {
+            background: #ffffff;
+            border-left: 5px solid var(--highlight);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            margin-bottom: 50px;
+        }
+
+        .about-box h3 {
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .about-box p {
+            color: #475569;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 45px;
+            margin-bottom: 40px;
         }
 
         .section-title h2 {
@@ -126,12 +168,11 @@
             font-size: 1.1rem;
         }
 
-        /* GRID CARDS */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin-bottom: 70px;
+            margin-bottom: 60px;
         }
 
         .card {
@@ -140,11 +181,6 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             border: 1px solid #e2e8f0;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
         }
 
         .card-icon {
@@ -172,7 +208,6 @@
             font-size: 0.95rem;
         }
 
-        /* FORM CONTAINER FOR MS FORMS */
         .form-wrapper {
             background: #ffffff;
             border-radius: 16px;
@@ -201,12 +236,17 @@
 </head>
 <body>
 
-    <!-- BANNER S PRIAMOU URL ADRESOU -->
     <div class="top-banner">
         <img src="https://adrianapalkova-ux.github.io/horizont-skolenia/banner.jpg" alt="Národná kancelária Horizont | MSCA | CVTI SR">
     </div>
 
-    <!-- MAIN HERO SECTION -->
+    <!-- NAVIGAČNÉ MENU -->
+    <nav>
+        <a href="index.html" class="active">Domov</a>
+        <a href="ponuka-skoleni.html">Ponuka školení & MSCA</a>
+        <a href="#rezervacia">Rezervácia prednášky</a>
+    </nav>
+
     <header>
         <div class="header-content">
             <span class="badge">Nová iniciatíva Národnej kancelárie Horizont pre univerzity a výskumné inštitúcie</span>
@@ -217,6 +257,14 @@
     </header>
 
     <div class="container">
+
+        <!-- KRÁTKE ÚVODNÉ INFO -->
+        <div class="about-box">
+            <h3>Podporujeme výskum na Slovensku</h3>
+            <p>
+                Národná kancelária Horizont pôsobiaca pri CVTI SR aktívne podporuje zapájanie slovenských výskumných inštitúcií a univerzít do programu Horizont Európa. Touto iniciatívou sa snažíme priniesť informácie o európskych grantoch priamo k vám – priamo do vašich posluchární, ústavov a laboratórií. Pomáhame výskumníčkam a výskumníkom vo všetkých fázach kariéry objaviť a využiť medzinárodné príležitosti.
+            </p>
+        </div>
         
         <div class="section-title">
             <h2>Ako pomáhame vede na Slovensku?</h2>
@@ -241,14 +289,12 @@
             </div>
         </div>
 
-        <!-- MS FORMS CONTAINER -->
         <div class="form-wrapper" id="rezervacia">
             <div class="section-title" style="margin-bottom: 25px;">
                 <h2>Rezervujte si termín prednášky</h2>
                 <p>Vyplňte formulár a my sa vám ozveme pre doladenie detailov.</p>
             </div>
 
-            <!-- TLAČIDLO NA OTVORENIE FORMULÁRA -->
             <a href="https://forms.cloud.microsoft/e/Ww9QNrE1Va" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 18px 40px;">
                 Otvoriť rezervačný formulár ↗
             </a>
