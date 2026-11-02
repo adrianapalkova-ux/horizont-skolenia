@@ -121,10 +121,67 @@
             box-shadow: 0 6px 20px rgba(0, 119, 182, 0.6);
         }
 
-        .container {
-            max-width: 1000px;
+        /* HLAVNÝ LAYOUT S ĽAVÝM MENU (SIDEBAR) */
+        .page-layout {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 50px 20px;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 850px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ĽAVÉ BOČNÉ MENU */
+        .sidebar {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0f2fe;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            color: var(--highlight);
+            transform: translateX(4px);
+        }
+
+        /* OBSAHOVÁ ČASŤ */
+        .content-area {
+            min-width: 0;
         }
 
         .about-box {
@@ -146,73 +203,92 @@
             color: #475569;
             font-size: 1.05rem;
             line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        /* ZVÝRAZNENÁ VÝZVA V STREDE */
+        .highlight-cta {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .highlight-cta strong {
+            display: inline-block;
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            background: #e0f2fe;
+            padding: 10px 24px;
+            border-radius: 30px;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 40px;
+            text-align: left;
+            margin-bottom: 30px;
+            margin-top: 40px;
         }
 
         .section-title h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--primary-dark);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .section-title p {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .card {
             background: #ffffff;
-            padding: 35px 25px;
+            padding: 30px 20px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             border: 1px solid #e2e8f0;
         }
 
         .card-icon {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background-color: #e0f2fe;
             color: var(--highlight);
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .card h3 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--primary-dark);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.93rem;
         }
 
         .format-note {
-            text-align: center;
-            background: #e0f2fe;
+            background: #f1f5f9;
             color: var(--primary-dark);
-            padding: 18px;
+            padding: 18px 25px;
             border-radius: 8px;
-            font-weight: 600;
-            margin-bottom: 60px;
-            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 50px;
+            font-size: 1rem;
+            border-left: 4px solid var(--accent-blue);
         }
 
         .form-wrapper {
@@ -221,9 +297,8 @@
             box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
             border: 1px solid #e2e8f0;
             padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
             text-align: center;
+            margin-top: 40px;
         }
 
         footer {
@@ -258,58 +333,108 @@
         <div class="header-content">
             <span class="badge">Národné kontaktné body pre excelentnú vedu</span>
             <h1>Horizont Európa bližšie k vám</h1>
-            <p>Excelentná veda: ERC a MSCA – prinášame špičkové granty priamo do vašich inštitúcií </p>
-            <a href="#rezervacia" class="btn-primary"> Dohodnite si prednášku s nami</a>
+            <p>Excelentná veda: ERC a MSCA – prinášame špičkové granty priamo do vašich inštitúcií</p>
+            <a href="#rezervacia" class="btn-primary">Dohodnite si prednášku s nami</a>
         </div>
     </header>
 
-    <div class="container">
+    <!-- HLAVNÝ LAYOUT S ĽAVÝM MENU A OBSAHOM -->
+    <div class="page-layout">
 
-        <div class="about-box">
-            <h3>Spolupracujme so školami a výskumnými inštitúciami</h3>
-            <p>
-                Národná kancelária Horizont pomáha výskumníkom uspieť v Horizonte Európa. Pomocou našich školení a prednášok vás oboznámime s informáciami o grantoch, rozpočtových pravidlách a prierezových prioritách priamo u vás. 
-                Pozvite nás k vám!
-            </p>
-        </div>
-        
-        <div class="section-title">
-            <h2>Oblasti, ktoré vám pokryjeme</h2>
-            <p>Pripravíme odborný obsah prednášok a školení šitý na mieru pre vašu inštitúciu.</p>
-        </div>
+        <!-- ĽAVÉ BOČNÉ MENU -->
+        <aside class="sidebar">
+            <h3>Navigácia na stránke</h3>
+            <ul>
+                <li><a href="#o-iniciative">O iniciatíve</a></li>
+                <li><a href="#oblasti">Oblasti, ktoré pokryjeme</a></li>
+                <li><a href="#pre-koho">Pre koho je to určené</a></li>
+                <li><a href="#rezervacia">Rezervácia termínu</a></li>
+            </ul>
+        </aside>
 
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">1</div>
-                <h3>ERC & MSCA schémy</h3>
-                <p>Prehľad grantov pre výskumníkov (ERC), študentov, doktorandov a konzorciá (MSCA) naštartuje vaše medzinárodné projekty.</p>
+        <!-- OBSAHOVÁ ČASŤ -->
+        <main class="content-area">
+
+            <!-- O INICIATÍVE -->
+            <div id="o-iniciative" class="about-box">
+                <h3>Spolupracujme so školami a výskumnými inštitúciami</h3>
+                <p>
+                    Národná kancelária Horizont pomáha výskumníkom uspieť v Horizonte Európa. Naša nová iniciatíva <strong>„Horizont bližšie k vám“</strong> je určená pre všetkých, ktorí sa chcú stať súčasťou Horizontu a plánujú sa zapojiť do jednej z dostupných schém.
+                </p>
+                <p>
+                    Priamo vás navštívime na vašej inštitúcii, alebo si dohodneme online workshop a prevedieme vás Horizontom od samotného hľadania výzvy až po zapojenie sa do projektu. Sme schopní vám pomôcť s implementáciou projektu. Pomocou našich školení a prednášok vás prevedieme celým procesom, či už ste v Horizonte skúsení alebo len začínate. Oboznámime vás s informáciami o grantoch, rozpočtových pravidlách a prierezových prioritách priamo u vás. Pripravíme interaktívny workshop, prednášku alebo inú formu školenia presne podľa vašich preferencií.
+                </p>
+                
+                <div class="highlight-cta">
+                    <strong>Dajte nám vedieť o vašom záujme. Pozvite nás k vám! Radi sa s vami stretneme.</strong>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-icon">2</div>
-                <h3>Rozpočet projektu (Budget)</h3>
-                <p>Praktické pravidlá a podmienky financovania, oprávnené náklady a finančné plánovanie európskych grantov.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">3</div>
-                <h3>Etika, gender & open science</h3>
-                <p>Dôležité prierezové priority EÚ a ich implementácia do projektových návrhov– otvorená veda, rodová rovnosť a etická integrita vo výskumných projektoch.</p>
-            </div>
-        </div>
-
-        <div class="format-note">
-            💡 Formát prednášok a školení (prezenčne, online alebo na vašej konferencii) vieme flexibilne prispôsobiť vašim potrebám. Vyplnte formulár nižšie a dohdoneme si s vami všetky detaily.
-        </div>
-
-        <div class="form-wrapper" id="rezervacia">
-            <div class="section-title" style="margin-bottom: 25px;">
-                <h2>Rezervujte si termín prednášky</h2>
-                <p>Vyplňte formulár a my sa vám ozveme pre doladenie detailov.</p>
+            
+            <!-- OBLASTI -->
+            <div id="oblasti" class="section-title">
+                <h2>Oblasti, ktoré vám pokryjeme</h2>
+                <p>Pripravíme odborný obsah prednášok a školení šitý na mieru pre vašu inštitúciu.</p>
             </div>
 
-            <a href="https://forms.cloud.microsoft/e/Ww9QNrE1Va" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 18px 40px;">
-                Otvoriť rezervačný formulár ↗
-            </a>
-        </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">1</div>
+                    <h3>ERC & MSCA schémy</h3>
+                    <p>Prehľad grantov pre výskumníkov (ERC), študentov, doktorandov a konzorciá (MSCA) naštartuje vaše medzinárodné projekty.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">2</div>
+                    <h3>Rozpočet projektu (Budget)</h3>
+                    <p>Praktické pravidlá a podmienky financovania, oprávnené náklady a finančné plánovanie európskych grantov.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">3</div>
+                    <h3>Etika, gender & open science</h3>
+                    <p>Dôležité prierezové priority EÚ a ich implementácia do projektových návrhút – otvorená veda, rodová rovnosť a etická integrita vo výskume.</p>
+                </div>
+            </div>
+
+            <div class="format-note">
+                💡 <strong>Flexibilný formát:</strong> Formát prednášok a školení (prezenčne, online alebo na vašej konferencii) vieme flexibilne prispôsobiť vašim potrebám. Vyplňte formulár nižšie a dohodneme si s vami všetky detaily.
+            </div>
+
+            <!-- PRE KOHO -->
+            <div id="pre-koho" class="section-title">
+                <h2>Pre koho sú naše školenia určené?</h2>
+                <p>Cielene rozdeľujeme podporu podľa stupňa a zamerania vašej kariéry.</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Študenti a doktorandi</h3>
+                    <p>Doktorandské siete (Doctoral Networks) a možnosti plne financovaných pozícií pre štart vedeckej dráhy.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔬</div>
+                    <h3>Postdoktorandi</h3>
+                    <p>Individuálne granty zamerané na naštartovanie a dlhodobý rozvoj nezávislej vedeckej kariéry.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏛️</div>
+                    <h3>Konzorciá a inštitúcie</h3>
+                    <p>Podpora a poradenstvo pre zapojenie celej vašej inštitúcie do medzinárodných konzorciálnych projektov.</p>
+                </div>
+            </div>
+
+            <!-- REZERVÁCIA -->
+            <div class="form-wrapper" id="rezervacia">
+                <div class="section-title" style="margin-bottom: 25px; text-align: center;">
+                    <h2>Rezervujte si termín prednášky</h2>
+                    <p>Vyplňte formulár a my sa vám ozveme pre doladenie detailov.</p>
+                </div>
+
+                <a href="https://forms.cloud.microsoft/e/Ww9QNrE1Va" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 18px 40px;">
+                    Otvoriť rezervačný formulár ↗
+                </a>
+            </div>
+
+        </main>
 
     </div>
 
