@@ -1,7 +1,433 @@
-<!-- SEKCIA 3: PRE KOHO -->
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizont Európa bližšie k vám | Národná kancelária Horizont</title>
+    <style>
+        :root {
+            --primary-dark: #001233;
+            --primary-blue: #002855;
+            --accent-blue: #0466c8;
+            --highlight: #0077b6;
+            --bg-light: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .top-banner {
+            background-color: #031433;
+            padding: 20px 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-banner img {
+            max-width: 1000px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        nav {
+            background-color: #001838;
+            text-align: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #38bdf8;
+        }
+
+        header {
+            background: linear-gradient(135deg, #031433 0%, #002855 100%);
+            color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #0077b6 0%, #0096c7 100%);
+            color: white;
+            padding: 16px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 14px rgba(0, 119, 182, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 119, 182, 0.6);
+        }
+
+        /* LAYOUT S ĽAVÝM MENU */
+        .page-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 850px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ĽAVÉ BOČNÉ MENU S AKTÍVNYM INDIKÁTOROM */
+        .sidebar {
+            background: #ffffff;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0f2fe;
+            padding-left: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 6px;
+            position: relative;
+        }
+
+        .sidebar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.93rem;
+            font-weight: 500;
+            display: block;
+            padding: 10px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            color: var(--highlight);
+            background-color: #f8fafc;
+        }
+
+        .sidebar a.active-link {
+            color: var(--highlight);
+            background-color: #e0f2fe;
+            font-weight: 600;
+            border-left: 4px solid var(--highlight);
+            padding-left: 14px;
+        }
+
+        .content-area {
+            min-width: 0;
+            padding-bottom: 150px; 
+        }
+
+        .about-box {
+            background: #ffffff;
+            border-left: 5px solid var(--highlight);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            margin-bottom: 50px;
+        }
+
+        .about-box h3 {
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .about-box p {
+            color: #475569;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .highlight-cta {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .highlight-cta strong {
+            display: inline-block;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            background: #e0f2fe;
+            padding: 10px 24px;
+            border-radius: 30px;
+        }
+
+        .section-title {
+            text-align: left;
+            margin-bottom: 30px;
+            margin-top: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .card-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0077b6 0%, #0096c7 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e0f2fe;
+            color: var(--highlight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin: 0 auto 20px auto;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            text-align: left;
+        }
+
+        .format-note {
+            background: #f1f5f9;
+            color: var(--primary-dark);
+            padding: 18px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-bottom: 50px;
+            font-size: 1rem;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .form-wrapper {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: #94a3b8;
+            text-align: center;
+            padding: 35px 20px;
+            font-size: 0.9rem;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer strong {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">
+        <img src="https://adrianapalkova-ux.github.io/horizont-skolenia/banner.jpg" alt="Národná kancelária Horizont | MSCA | ERC | CVTI SR">
+    </div>
+
+    <nav>
+        <a href="index.html" class="active">Domov</a>
+        <a href="ponuka-skoleni.html">Ponuka školení (ERC & MSCA)</a>
+        <a href="faq.html">Často kladené otázky</a>
+        <a href="#rezervacia">Rezervácia prednášky</a>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <span class="badge">Pilier 1 | Národná kancelária Horizont pre excelentnú vedu</span>
+            <h1>Horizont Európa bližšie k vám</h1>
+            <p>Excelentná veda: ERC a MSCA – prinášame špičkové granty priamo do vašich inštitúcií</p>
+            <a href="#rezervacia" class="btn-primary">Dohodnite si prednášku s nami</a>
+        </div>
+    </header>
+
+    <div class="page-layout">
+
+        <!-- ĽAVÉ BOČNÉ MENU -->
+        <aside class="sidebar">
+            <h3>Navigácia na stránke</h3>
+            <ul id="sidebar-menu">
+                <li><a href="#o-iniciative" class="active-link">O iniciatíve</a></li>
+                <li><a href="#oblasti">Oblasti, ktoré pokryjeme</a></li>
+                <li><a href="#pre-koho">Pre koho sú naše školenia určené</a></li>
+                <li><a href="#rezervacia">Rezervácia termínu</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+
+            <!-- SEKCIA 1: O INICIATÍVE -->
+            <div id="o-iniciative" class="about-box">
+                <h3>O iniciatíve Horizont bližšie k vám</h3>
+                <p>
+                    Národná kancelária Horizont pomáha výskumníkom uspieť v Horizonte Európa. Naša nová iniciatíva <strong>„Horizont bližšie k vám“</strong> je určená pre všetkých, ktorí sa chcú stať súčasťou Horizontu a plánujú sa zapojiť do jednej z dostupných schém.
+                </p>
+                <p>
+                    Priamo vás navštívime na vašej inštitúcii, alebo si dohodneme online workshop a prevedieme vás Horizontom od samotného hľadania výzvy až po zapojenie sa do projektu. Sme schopní vám pomôcť s implementáciou projektu. Pomocou našich školení a prednášok vás prevedieme celým procesom, či už ste v Horizonte skúsení alebo len začínate. Oboznámime vás s informáciami o grantoch, rozpočtových pravidlách a prierezových prioritách priamo u vás. Pripravíme interaktívny workshop, prednášku alebo inú formu školenia presne podľa vašich preferencií.
+                </p>
+                
+                <div class="highlight-cta">
+                    <strong>Dajte nám vedieť o vašom záujme. Pozvite nás k vám! Radi sa s vami stretneme.</strong>
+                </div>
+            </div>
+            
+            <!-- SEKCIA 2: OBLASTI -->
+            <div id="oblasti" class="section-title">
+                <h2>Oblasti, ktoré vám pokryjeme</h2>
+                <p>Pripravíme odborný obsah prednášok a školení šitý na mieru pre vašu inštitúciu.</p>
+            </div>
+
+            <div class="grid">
+                <div class="card" style="text-align: left;">
+                    <div class="card-number">1</div>
+                    <h3 style="text-align: center;">ERC & MSCA schémy</h3>
+                    <p>Prehľad grantov pre výskumníkov (ERC), študentov, doktorandov a konzorciá (MSCA) naštartuje vaše medzinárodné projekty.</p>
+                </div>
+                <div class="card" style="text-align: left;">
+                    <div class="card-number">2</div>
+                    <h3 style="text-align: center;">Rozpočet projektu (Budget)</h3>
+                    <p>Praktické pravidlá a podmienki financovania, oprávnené náklady a finančné plánovanie európskych grantov.</p>
+                </div>
+                <div class="card" style="text-align: left;">
+                    <div class="card-number">3</div>
+                    <h3 style="text-align: center;">Etika, gender & open science</h3>
+                    <p>Dôležité prierezové priority EÚ a ich implementácia do projektových návrhov – otvorená veda, rodová rovnosť a etická integrita vo výskume.</p>
+                </div>
+            </div>
+
+            <div class="format-note">
+                💡 <strong>Flexibilný formát:</strong> Formát prednášok a školení (prezenčne, online alebo na vašej konferencii) vieme flexibilne prispôsobiť vašim potrebám. Vyplňte formulár nižšie a dohodneme si s vami všetky detaily.
+            </div>
+
+            <!-- SEKCIA 3: PRE KOHO -->
             <div id="pre-koho" class="section-title">
                 <h2>Pre koho sú naše školenia určené?</h2>
-                <p>Cielene rozdeľujeme podporu pre jednotlivcov vo všetkých fázach kariéry aj pre samotné organizácie.</p>
+                <p>Cielene rozdeľujeme podporu pre jednotlivcov vo všetkých fázach kariéry aj pre organizácie.</p>
             </div>
 
             <div class="grid">
@@ -21,3 +447,56 @@
                     <p>Príležitosti pre súkromné firmy, MSP, verejnú správu či neziskové organizácie zapojiť sa do medzinárodných sietí, hosťovať výskumníkov a prepojiť výskum s praxou.</p>
                 </div>
             </div>
+
+            <!-- SEKCIA 4: REZERVÁCIA -->
+            <div class="form-wrapper" id="rezervacia">
+                <div class="section-title" style="margin-bottom: 25px; text-align: center; margin-top: 0;">
+                    <h2>Rezervujte si termín prednášky</h2>
+                    <p>Vyplňte formulár a my sa vám ozveme pre doladenie detailov.</p>
+                </div>
+
+                <a href="https://forms.cloud.microsoft/e/Ww9QNrE1Va" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 18px 40px;">
+                    Otvoriť rezervačný formulár ↗
+                </a>
+            </div>
+
+        </main>
+
+    </div>
+
+    <footer>
+        <p>© <strong>Národná kancelária Horizont</strong> | Centrum vedecko-technických informácií SR (CVTI SR)</p>
+    </footer>
+
+    <!-- SKRIPT NA SLEDOVANIE AKTÍVNEJ ČASTI V BOČNOM MENU -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-area > div[id], .content-area > .section-title, .content-area > .about-box');
+            const navLinks = document.querySelectorAll('.sidebar ul li a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                const scrollPos = window.pageYOffset + 200;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollPos >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 80) {
+                    current = 'rezervacia';
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active-link');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
