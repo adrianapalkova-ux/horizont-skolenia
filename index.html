@@ -184,7 +184,6 @@
             background-color: #f8fafc;
         }
 
-        /* AKTÍVNY POLOKRUH / OBDĹŽNIK NA BOČNEJ LIŠTE */
         .sidebar a.active-link {
             color: var(--highlight);
             background-color: #e0f2fe;
@@ -195,6 +194,8 @@
 
         .content-area {
             min-width: 0;
+            /* Zabezpečenie dostatočného priestoru pre správne zascrollovanie poslednej sekcie */
+            padding-bottom: 150px; 
         }
 
         .about-box {
@@ -268,7 +269,6 @@
             text-align: center;
         }
 
-        /* 3. OBRÁZOK: ČÍSLO V STREDE, BEZ RÁMIKOV, ATRAKTÍVNVEJŠIE */
         .card-number {
             width: 50px;
             height: 50px;
@@ -284,7 +284,6 @@
             box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3);
         }
 
-        /* IKONY PRE CIEĽOVÉ SKUPINY */
         .card-icon {
             width: 50px;
             height: 50px;
@@ -361,7 +360,6 @@
 
     <header>
         <div class="header-content">
-            <!-- 1. OBRÁZOK: PILIER 1 A ZMENENÝ NÁZOV -->
             <span class="badge">Pilier 1 | Národná kancelária Horizont pre excelentnú vedu</span>
             <h1>Horizont Európa bližšie k vám</h1>
             <p>Excelentná veda: ERC a MSCA – prinášame špičkové granty priamo do vašich inštitúcií</p>
@@ -371,7 +369,7 @@
 
     <div class="page-layout">
 
-        <!-- 2. OBRÁZOK: NÁZVY ZODPOVEDAJÚ SEKCIÁM + AKTÍVNY OBDĹŽNIK -->
+        <!-- ĽAVÉ BOČNÉ MENU -->
         <aside class="sidebar">
             <h3>Navigácia na stránke</h3>
             <ul id="sidebar-menu">
@@ -384,9 +382,9 @@
 
         <main class="content-area">
 
-            <!-- SEKCIA 1 -->
+            <!-- SEKCIA 1: O INICIATÍVE -->
             <div id="o-iniciative" class="about-box">
-                <h3>Spolupracujme so školami a výskumnými inštitúciami</h3>
+                <h3>O iniciatíve Horizont bližšie k vám</h3>
                 <p>
                     Národná kancelária Horizont pomáha výskumníkom uspieť v Horizonte Európa. Naša nová iniciatíva <strong>„Horizont bližšie k vám“</strong> je určená pre všetkých, ktorí sa chcú stať súčasťou Horizontu a plánujú sa zapojiť do jednej z dostupných schém.
                 </p>
@@ -399,13 +397,12 @@
                 </div>
             </div>
             
-            <!-- SEKCIA 2 -->
+            <!-- SEKCIA 2: OBLASTI -->
             <div id="oblasti" class="section-title">
                 <h2>Oblasti, ktoré vám pokryjeme</h2>
                 <p>Pripravíme odborný obsah prednášok a školení šitý na mieru pre vašu inštitúciu.</p>
             </div>
 
-            <!-- 3. OBRÁZOK: ČÍSLO V STREDE, ATRAKTÍVNEJŠIE, BEZ RÁMIKOV -->
             <div class="grid">
                 <div class="card" style="text-align: left;">
                     <div class="card-number">1</div>
@@ -415,7 +412,7 @@
                 <div class="card" style="text-align: left;">
                     <div class="card-number">2</div>
                     <h3 style="text-align: center;">Rozpočet projektu (Budget)</h3>
-                    <p>Praktické pravidlá a podmienki financovania, oprávnené náklady a finančné plánowanie európskych grantov.</p>
+                    <p>Praktické pravidlá a podmienky financovania, oprávnené náklady a finančné plánowanie európskych grantov.</p>
                 </div>
                 <div class="card" style="text-align: left;">
                     <div class="card-number">3</div>
@@ -428,13 +425,12 @@
                 💡 <strong>Flexibilný formát:</strong> Formát prednášok a školení (prezenčne, online alebo na vašej konferencii) vieme flexibilne prispôsobiť vašim potrebám. Vyplňte formulár nižšie a dohodneme si s vami všetky detaily.
             </div>
 
-            <!-- SEKCIA 3 -->
+            <!-- SEKCIA 3: PRE KOHO -->
             <div id="pre-koho" class="section-title">
                 <h2>Pre koho sú naše školenia určené?</h2>
-                <p>Cielene rozdeľujeme podporu pre univerzity, výskumné organizácie a ich zamestnancov.</p>
+                <p>Cielene rozdeľujeme podporu pre študentov, výskumníkov, univerzity a ďalší personál.</p>
             </div>
 
-            <!-- 4. OBRÁZOK: ROZŠÍRENÉ CIEĽOVÉ SKUPINY -->
             <div class="grid">
                 <div class="card">
                     <div class="card-icon">🎓</div>
@@ -449,7 +445,7 @@
                 <div class="card">
                     <div class="card-icon">🏛️</div>
                     <h3>Univerzity a výskumné organizácie</h3>
-                    <p>Komplexná podpora pre etablovaných vedcov, výskumné tímy, manažérov a iných zamestnancov pri zapojení do konzorcií.</p>
+                    <p>Komplexná podpora pre etablovaných vedcov, výskumné tímy, manažérov, administratívnych pracovníkov a iných zamestnancov pri zapojení do konzorcií.</p>
                 </div>
             </div>
 
@@ -481,16 +477,18 @@
 
             window.addEventListener('scroll', () => {
                 let current = '';
+                const scrollPos = window.pageYOffset + 200;
+
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    if (pageYOffset >= sectionTop - 150) {
+                    if (scrollPos >= sectionTop) {
                         current = section.getAttribute('id');
                     }
                 });
 
-                // Špeciálna kontrola pre prvé sekcie
-                if(pageYOffset < 300) {
-                    current = 'o-iniciative';
+                // Kontrola pre spodnú časť (rezervácia)
+                if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 80) {
+                    current = 'rezervacia';
                 }
 
                 navLinks.forEach(link => {
